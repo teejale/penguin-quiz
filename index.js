@@ -1,18 +1,25 @@
 
-// fixa darkmode
+// darkmode
+const darkLightBtn = document.querySelector("#modeBtn");
+
+
+darkLightBtn.addEventListener("click", () => {
+  darkLightBtn.append();
+  
+});
 
 const quizData = [
-  {
-    question: "Which penguin species is this?",
-    options: ["King Penguin", "Gentoo Penguin", "Chinstrap Penguin", "Emperor Penguin", "Adelié Penguin"],
-    answer: "King Penguin"
-  },
   { 
     // checkbox options
     question: "What food do penguins eat? Three right answers!",
     options: ["Starfish", "Krill", "Algae", "Fish", "Squid", "Seaweed"],
     type: "checkbox",
     answer:["Krill", "Fish", "Squid"]
+  },
+  {
+    question: "Which penguin species is this?",
+    options: ["King Penguin", "Gentoo Penguin", "Chinstrap Penguin", "Emperor Penguin", "Adelié Penguin"],
+    answer: "King Penguin"
   },
   {
     question: "Do all penguins go through fasting?",
@@ -80,15 +87,25 @@ function showQuestion() {
   //cler all HTML content of options
   optionsElement.innerHTML = "";
   quiz.options.forEach(option => {
-      if(quiz.type === "checkbox") {
-        const checkbox = document.createElement("input");
-        checkbox.setAttribute("type", "checkbox");
-        checkbox.innerText = option; 
-        optionsElement.appendChild(checkbox);
-        
-        const maxLimit = 2; 
-        const checkboxes = document.querySelector("#")
-        
+    if(quiz.type === "checkbox") {
+      const checkbox = document.createElement("input");
+      checkbox.setAttribute("type", "checkbox");
+      checkbox.addEventListener("click", () => {
+        const inputs = document.querySelectorAll("#options input:checked");
+        if(inputs.length > 3) {
+          //unchecked 
+          const checkLimit = document.querySelectorAll(`#options input type= "hidden"`);
+          // document.querySelectorAll(checkLimit).disabled = true;
+          
+        }
+      });
+      const label = document.createElement("label");
+      label.innerText = option;
+      // create labels for options so the text will display on DOM
+      optionsElement.appendChild(label);
+      checkbox.innerText = option; 
+      optionsElement.appendChild(checkbox);
+      
     
     } else {
       const radioBtn = document.createElement("input");
@@ -113,8 +130,9 @@ function selectAnswer(e) {
   if(selectedButton.innerText === answer) {
     score ++
     
+    
   } else {
-  
+
   }
 
   currentQuestion++; 
