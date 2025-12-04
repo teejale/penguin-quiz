@@ -4,6 +4,22 @@ body {
 }
 
 .darkMode {
-  background-color: black;
+  background-color: #262730;
   color: white;
+} 
+
+.hidden {
+  display: none; 
+}
+
+#penguins {
+  height: 500px;
+}
+
+.rightAnswer {
+  color: green; 
+}
+
+.wrongAnswer {
+  color: red;
 }

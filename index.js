@@ -1,25 +1,35 @@
 
 // darkmode
-const darkLightBtn = document.querySelector("#modeBtn");
+function changeMode() {
+  let element = document.body;
+  //using toggle to switch between elements
+  element.classList.toggle("darkMode");
+  //declare new variable that checks if darkMode exist as a class
+  const isDarkMode = element.classList.contains("darkMode");
+  let darkLightBtn = document.querySelector("#modeBtn");
+  //check if the class is activated and set condition to it
+  if (isDarkMode) {
+    darkLightBtn.textContent = "Change to light mode";
+  } else {
+    darkLightBtn.textContent = "Change to dark mode";
+  }
+}
 
 
-darkLightBtn.addEventListener("click", () => {
-  darkLightBtn.append();
-  
-});
-
+//add JSON 
 const quizData = [
-  { 
+  {
     // checkbox options
     question: "What food do penguins eat? Three right answers!",
     options: ["Starfish", "Krill", "Algae", "Fish", "Squid", "Seaweed"],
     type: "checkbox",
-    answer:["Krill", "Fish", "Squid"]
+    answer: ["Krill", "Fish", "Squid"]
   },
   {
     question: "Which penguin species is this?",
     options: ["King Penguin", "Gentoo Penguin", "Chinstrap Penguin", "Emperor Penguin", "Adelié Penguin"],
-    answer: "King Penguin"
+    answer: "King Penguin",
+    img: "/img/matthew-stephenson-EWJyQTLSo5o-unsplash.jpg"
   },
   {
     question: "Do all penguins go through fasting?",
@@ -41,12 +51,14 @@ const quizData = [
   {
     question: "Chicks go through an akward teen phase were they begin to molt. In this stage they look silly but for a chick it is a matter of survival. They shed their fluffy fur and grow waterproof feathers. A step closer to become an independent adult! Which penguin species is this little chick?",
     options: ["African Penguin", "Macaroni Penguin", "Magellanic Penguin", "Little Penguin"],
-    answer: "African Penguin"
+    answer: "African Penguin",
+    img: "/img/miguel-alcantara-Ai4qoYZgetA-unsplash.jpg"
   },
   {
     question: "Which species is this?",
     options: ["Snares Penguin", "Erect-Crestet Penguin", "Northern Rockhopper Penguin", "Royal Penguin"],
-    answer: "Northern Rockhopper Penguin"
+    answer: "Northern Rockhopper Penguin",
+    img: "/img/thomas-denton-pjt4AzvfTh0-unsplash.jpg"
   },
   {
     question: "Which species is the tallest?",
@@ -56,7 +68,8 @@ const quizData = [
   {
     question: "Which specis is this?",
     options: ["Yellow-Eyed-Penguin", "Magellanic Penguin", "Galapagos Penguin", "Fiordland Penguin"],
-    answer: "Magellanic Penguin"
+    answer: "Magellanic Penguin",
+    img: "/img/agl-fotos-GQLT-fno6AU-unsplash.jpg"
   },
   {
     question: "What maxmimum time can emperor penguins hold their breath?",
@@ -74,39 +87,39 @@ const submitBtn = document.querySelector("#submit");
 
 submitBtn.addEventListener("click", selectAnswer);
 // Starts with first question (index 0)
-let currentQuestion = 0; 
+let currentQuestion = 0;
 // starts with 0 scores
-let score = 0; 
+let score = 0;
 
 function showQuestion() {
   //targeting quizdata and currentQuestion, saves it in variable quiz
   const quiz = quizData[currentQuestion];
   //targeting the questions 
-  questionElement.innerText = quiz.question; 
-
+  questionElement.innerText = quiz.question;
   //cler all HTML content of options
   optionsElement.innerHTML = "";
+  const image = document.querySelector("#penguins");
+  // add the class hidden as default 
+  image.classList.add("hidden");
+  
   quiz.options.forEach(option => {
-    if(quiz.type === "checkbox") {
+    if (quiz.type === "checkbox") {
       const checkbox = document.createElement("input");
       checkbox.setAttribute("type", "checkbox");
       checkbox.addEventListener("click", () => {
         const inputs = document.querySelectorAll("#options input:checked");
-        if(inputs.length > 3) {
+        if (inputs.length > 3) {
           //unchecked 
           const checkLimit = document.querySelectorAll(`#options input type= "hidden"`);
           // document.querySelectorAll(checkLimit).disabled = true;
-          
         }
       });
       const label = document.createElement("label");
       label.innerText = option;
       // create labels for options so the text will display on DOM
       optionsElement.appendChild(label);
-      checkbox.innerText = option; 
-      optionsElement.appendChild(checkbox);
-      
-    
+      checkbox.innerText = option;
+      optionsElement.appendChild(checkbox); 
     } else {
       const radioBtn = document.createElement("input");
       radioBtn.setAttribute("type", "radio");
@@ -116,28 +129,32 @@ function showQuestion() {
       label.innerText = option;
       optionsElement.appendChild(radioBtn);
       optionsElement.appendChild(label);
-      
-
     }
-  
-  });
+    
+    // check if there is img in the quiz and set condition to it
+    if(quiz.img) {
+      image.src = quiz.img;
+      //remove class hidden to reveal img
+      image.classList.remove("hidden");
+    }
+  }
+
+);
 }
 
 function selectAnswer(e) {
-  const selectedButton = e.target; 
+  const selectedButton = e.target;
   const answer = quizData[currentQuestion].answer;
 
-  if(selectedButton.innerText === answer) {
-    score ++
-    
-    
+  if (selectedButton.innerText === answer) {
+    score++
   } else {
 
   }
 
-  currentQuestion++; 
+  currentQuestion++;
 
-  if(currentQuestion < quizData.length) {
+  if (currentQuestion < quizData.length) {
     showQuestion();
   } else {
     showResult();
