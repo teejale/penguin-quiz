@@ -9,16 +9,20 @@
   <script src="index.js" defer></script>
 </head>
 <body>
-  <button onclick= changeMode() value = "darkLightBtn" id="modeBtn">Change to dark mode</button>
-  <div id="quiz">
+  <header>
     <h1>The ultimate penguin quiz</h1>
+    <span>
+      <button onclick= changeMode() value = "darkLightBtn" id="modeBtn">Change to dark mode</button>
+    </span>
+  </header>
+  <div id="quiz">
     <div id="questions"></div>
     <div id="images">
       <img src="" alt="" id="penguins" class="hidden">
     </div>
     <div id="options"></div>
     <div id="rightAnswer"></div>
-    <button id="submit">Next question</button>
+    <button id="submit" class="hide">Next question</button>
   </div>
 </body>
 </html>

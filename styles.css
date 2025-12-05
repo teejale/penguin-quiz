@@ -1,6 +1,36 @@
+* {
+  margin: 4px;
+}
+header {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+}
+
+span {
+  width: ;
+}
+#modeBtn {
+  background-color: rgba(91, 91, 151, 0.753);
+  align-self: flex-end;
+
+}
+
 body {
   background-color: white;
   color: black;
+}
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#options {
+  margin: 15px;
+  padding: 10px;
 }
 
 .darkMode {
@@ -16,10 +46,11 @@ body {
   height: 500px;
 }
 
-.rightAnswer {
-  color: green; 
+#submit {
+  margin-top: 10px;
 }
 
-.wrongAnswer {
-  color: red;
+#submit, #modeBtn {
+  cursor: pointer;
+  /* display: none; */
 }

@@ -12,6 +12,7 @@ function changeMode() {
     darkLightBtn.textContent = "Change to light mode";
   } else {
     darkLightBtn.textContent = "Change to dark mode";
+    
   }
 }
 
@@ -83,6 +84,8 @@ const quizData = [
 const questionElement = document.querySelector("#questions");
 const optionsElement = document.querySelector("#options");
 const submitBtn = document.querySelector("#submit");
+const showRightAnsw = document.querySelector("#rightAnswer");
+
 
 
 submitBtn.addEventListener("click", selectAnswer);
@@ -90,23 +93,29 @@ submitBtn.addEventListener("click", selectAnswer);
 let currentQuestion = 0;
 // starts with 0 scores
 let score = 0;
-
+  
 function showQuestion() {
   //targeting quizdata and currentQuestion, saves it in variable quiz
   const quiz = quizData[currentQuestion];
-  //targeting the questions 
+  //targeting the question
   questionElement.innerText = quiz.question;
   //cler all HTML content of options
   optionsElement.innerHTML = "";
   const image = document.querySelector("#penguins");
   // add the class hidden as default 
   image.classList.add("hidden");
-  
+
+  //counter starts at 0
+  let counter = 0;
   quiz.options.forEach(option => {
+    //counter for unique id
+    counter++;
+
+    const input = document.createElement("input");
+    input.setAttribute("id", `checkBoxOpt_${counter}`);
     if (quiz.type === "checkbox") {
-      const checkbox = document.createElement("input");
-      checkbox.setAttribute("type", "checkbox");
-      checkbox.addEventListener("click", () => {
+      input.setAttribute("type", "checkbox");
+      input.addEventListener("click", () => {
         const inputs = document.querySelectorAll("#options input:checked");
         if (inputs.length > 3) {
           //unchecked 
@@ -114,22 +123,17 @@ function showQuestion() {
           // document.querySelectorAll(checkLimit).disabled = true;
         }
       });
-      const label = document.createElement("label");
-      label.innerText = option;
       // create labels for options so the text will display on DOM
-      optionsElement.appendChild(label);
-      checkbox.innerText = option;
-      optionsElement.appendChild(checkbox); 
     } else {
-      const radioBtn = document.createElement("input");
-      radioBtn.setAttribute("type", "radio");
-      radioBtn.name = "answers";
-      radioBtn.innerText = option;
-      const label = document.createElement("label");
-      label.innerText = option;
-      optionsElement.appendChild(radioBtn);
-      optionsElement.appendChild(label);
+      input.setAttribute("type", "radio");
+      input.name = "answers";
     }
+    optionsElement.appendChild(input); 
+
+    const label = document.createElement("label");
+    label.setAttribute("for", `checkBoxOpt_${counter}`);
+    label.innerText = option;
+    optionsElement.appendChild(label);
     
     // check if there is img in the quiz and set condition to it
     if(quiz.img) {
@@ -137,19 +141,21 @@ function showQuestion() {
       //remove class hidden to reveal img
       image.classList.remove("hidden");
     }
-  }
 
-);
+  });
 }
 
 function selectAnswer(e) {
   const selectedButton = e.target;
-  const answer = quizData[currentQuestion].answer;
-
-  if (selectedButton.innerText === answer) {
-    score++
-  } else {
-
+  const currentQuiz = quizData[currentQuestion];
+  if (currentQuiz.type !== "checkbox") {
+    // TODO: Get label i selector
+    const selectedOption = document.querySelector("#options input:checked");
+    selectedOption.id
+    const selectedLabel = document.querySelector(); // hämta ut label via selectedOption.id
+    if (selectedOption.innerText === currentQuiz.answer) {
+      score++
+    }
   }
 
   currentQuestion++;
@@ -167,3 +173,7 @@ function showResult() {
 }
 
 showQuestion();
+
+//create a next button that shows when clicked an answer!
+// create a play again button at the end of the quiz! 
+// add cursor pointers!
