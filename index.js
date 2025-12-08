@@ -83,17 +83,19 @@ const quizData = [
 //declare variables
 const questionElement = document.querySelector("#questions");
 const optionsElement = document.querySelector("#options");
+const nextBtn = document.querySelector("#next");
 const submitBtn = document.querySelector("#submit");
 const showRightAnsw = document.querySelector("#rightAnswer");
 
 
+nextBtn.addEventListener("click", selectAnswer);
 
-submitBtn.addEventListener("click", selectAnswer);
+// nextBtn.style.display = "none";  
+// make btn visible here
 // Starts with first question (index 0)
 let currentQuestion = 0;
 // starts with 0 scores
 let score = 0;
-  
 function showQuestion() {
   //targeting quizdata and currentQuestion, saves it in variable quiz
   const quiz = quizData[currentQuestion];
@@ -104,26 +106,30 @@ function showQuestion() {
   const image = document.querySelector("#penguins");
   // add the class hidden as default 
   image.classList.add("hidden");
-
-  //counter starts at 0
-  let counter = 0;
-  quiz.options.forEach(option => {
-    //counter for unique id
-    counter++;
-
+  quiz.options.forEach((option, i) => {
     const input = document.createElement("input");
-    input.setAttribute("id", `checkBoxOpt_${counter}`);
+    input.setAttribute("id", `checkBoxOpt_${i}`);
+    input.setAttribute("value", i);
     if (quiz.type === "checkbox") {
       input.setAttribute("type", "checkbox");
       input.addEventListener("click", () => {
         const inputs = document.querySelectorAll("#options input:checked");
-        if (inputs.length > 3) {
+        if (inputs.length >= 3) {
           //unchecked 
-          const checkLimit = document.querySelectorAll(`#options input type= "hidden"`);
-          // document.querySelectorAll(checkLimit).disabled = true;
-        }
+          const notChecked = document.querySelectorAll(`#options input:not(:checked)`);
+          notChecked.forEach((box) => {
+            //inputs that is not checked will be disabled
+            box.disabled = true;
+          });
+        } else {
+          //if checked less than 3 all options will not be disabled
+          const allOptions = document.querySelectorAll(`#options input`);
+          allOptions.forEach((box) => {
+            box.disabled = false;
+          });
+        }  
       });
-      // create labels for options so the text will display on DOM
+      // create labels for options so the text will display 
     } else {
       input.setAttribute("type", "radio");
       input.name = "answers";
@@ -131,7 +137,7 @@ function showQuestion() {
     optionsElement.appendChild(input); 
 
     const label = document.createElement("label");
-    label.setAttribute("for", `checkBoxOpt_${counter}`);
+    label.setAttribute("for", `checkBoxOpt_${i}`);
     label.innerText = option;
     optionsElement.appendChild(label);
     
@@ -141,21 +147,32 @@ function showQuestion() {
       //remove class hidden to reveal img
       image.classList.remove("hidden");
     }
-
   });
+
+  // show right answers if click submit btn
+  submitBtn.addEventListener("click", ()  => {
+    showRightAnsw.innerText = `The right answer is: ${quiz.answer}`;
+  });
+
 }
 
+
 function selectAnswer(e) {
+  
+  const selectedOption = document.querySelector("#options input:checked");
+  if(selectedOption === null) {
+    alert("you have not checked in any");
+    //stays on the same page if user click the next button without checking in any
+    return;
+  }
   const selectedButton = e.target;
   const currentQuiz = quizData[currentQuestion];
   if (currentQuiz.type !== "checkbox") {
-    // TODO: Get label i selector
-    const selectedOption = document.querySelector("#options input:checked");
-    selectedOption.id
-    const selectedLabel = document.querySelector(); // hämta ut label via selectedOption.id
-    if (selectedOption.innerText === currentQuiz.answer) {
+    if (currentQuiz.options[selectedOption.value] === currentQuiz.answer) {
       score++
     }
+  } else {
+    
   }
 
   currentQuestion++;
