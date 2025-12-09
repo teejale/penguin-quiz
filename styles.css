@@ -71,8 +71,12 @@ body {
 }
 
 #answer-container {
-  height: 60%;
+  height: 50%;
   width: 48%;
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+  font-size: 20px;
 }
 
 #buttons-container {

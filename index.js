@@ -100,7 +100,7 @@ const submitBtn = document.querySelector("#submit");
 const showRightAnsw = document.querySelector("#rightAnswer");
 
 
-nextBtn.addEventListener("click", selectAnswer);
+nextBtn.addEventListener("click", nextQuestion);
 // Starts with first question (index 0)
 let currentQuestion = 0;
 // starts with 0 scores
@@ -165,31 +165,63 @@ function showQuestion() {
   }); 
 }
 
+function arraysEqualIgnoreOrder(a, b) {
+  if (a.length !== b.length) return false;
+
+  const sortedA = [...a].sort();
+  const sortedB = [...b].sort();
+
+  return sortedA.every((val, i) => val === sortedB[i]);
+}
+
 // stuck here! 
-submitBtn.addEventListener("click", ()  => { 
+submitBtn.addEventListener("click", (e)  => { 
   const quiz = quizData[currentQuestion];
   const selectedOptions = document.querySelectorAll("#options input:checked");
-  //map method
-  const selectedValues = selectedOptions.map((opt) => {
-    return opt.value;
-  })
+  const selectedOptionsArr = Array.from(selectedOptions);
+
+
+  if(quiz.type === "checkbox" && selectedOptionsArr.length < quiz.answer.length) {
+    alert(`You have to select ${quiz.answer.length} options!`);
+    return;
+  }
   
+  //map method
+  const selectedAnswers = selectedOptionsArr.map((opt) => {
+    return quiz.options[opt.value];
+  })
+
+  console.log(selectedAnswers.length);
+
+  if(selectedAnswers.length > 1 && arraysEqualIgnoreOrder(selectedAnswers, quiz.answer)) {
+    score++
+    showRightAnsw.style.color = "green";
+    showRightAnsw.innerText = "Right!";
+  } else if (quiz.answer === selectedAnswers[0]) {
+    score++
+    showRightAnsw.style.color = "green";
+    showRightAnsw.innerText = "Right!";
+  } else {
+    showRightAnsw.style.color = "red";
+    showRightAnsw.innerText = `Wrong! The right answer is: ${quiz.answer}`;
+  }
+
+  submitBtn.disabled = true;
+  selectedOptions.forEach((box) => {
+    box.disabled = true;
+  })
+
   // selectedOptions.forEach((e) => {
 
   // });
   // if quiz.answer includes ALLA e.value 
   // if(quiz.answer.includes(e.value))
 
-  if(quiz.answer === selectedOption.value) {
-    console.log("Right!");
-    showRightAnsw.innerText = `The right answer is: ${quiz.answer}`;
-  } else {
-    console.log("wrong");
-  }
+  
 });
 
 
-function selectAnswer(e) {
+function nextQuestion() {
   //the queryselector here only work for radio and not checkboxes
   //checkboxes can have multiple checked inputs, detects only one
   //queryselectorAll for multiselect checkboxes
@@ -201,18 +233,6 @@ function selectAnswer(e) {
     //with return statement stays on the same page so user can check in checkbox
     return;
   }
-  const selectedButton = e.target;
-  const currentQuiz = quizData[currentQuestion];
-  if (currentQuiz.type !== "checkbox") {
-    //checks if the selected options value is equal to the current quiz's answer
-    if (currentQuiz.options[selectedOption.value] === currentQuiz.answer) {
-      // if the statement is correct add one more score
-      score++
-    }
-  } else {
-    
-  }
-
   // moves to next question
   currentQuestion++;
   // if there is any questions left then move on to the next question
