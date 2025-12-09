@@ -89,9 +89,6 @@ const showRightAnsw = document.querySelector("#rightAnswer");
 
 
 nextBtn.addEventListener("click", selectAnswer);
-
-// nextBtn.style.display = "none";  
-// make btn visible here
 // Starts with first question (index 0)
 let currentQuestion = 0;
 // starts with 0 scores
@@ -108,21 +105,27 @@ function showQuestion() {
   image.classList.add("hidden");
   quiz.options.forEach((option, i) => {
     const input = document.createElement("input");
+    //give a unique id to every input
     input.setAttribute("id", `checkBoxOpt_${i}`);
+    //give a unique value to every input
     input.setAttribute("value", i);
+    //the code will execute if there is checkboxes
     if (quiz.type === "checkbox") {
       input.setAttribute("type", "checkbox");
+      // addeventlistener for checkboxes
       input.addEventListener("click", () => {
+        //retrieves all checked inputs from options
         const inputs = document.querySelectorAll("#options input:checked");
-        if (inputs.length >= 3) {
-          //unchecked 
+        //checks if the length of inputs are less than or equal than answer length
+        if (inputs.length >= quiz.answer.length) {
+          //retrieves all unchecked inputs
           const notChecked = document.querySelectorAll(`#options input:not(:checked)`);
           notChecked.forEach((box) => {
             //inputs that is not checked will be disabled
             box.disabled = true;
           });
         } else {
-          //if checked less than 3 all options will not be disabled
+          //if checked less than 3 the all checkboxs will be non disabled
           const allOptions = document.querySelectorAll(`#options input`);
           allOptions.forEach((box) => {
             box.disabled = false;
@@ -135,8 +138,8 @@ function showQuestion() {
       input.name = "answers";
     }
     optionsElement.appendChild(input); 
-
     const label = document.createElement("label");
+    //give a unique label for every checkbox
     label.setAttribute("for", `checkBoxOpt_${i}`);
     label.innerText = option;
     optionsElement.appendChild(label);
@@ -144,52 +147,73 @@ function showQuestion() {
     // check if there is img in the quiz and set condition to it
     if(quiz.img) {
       image.src = quiz.img;
-      //remove class hidden to reveal img
+      //remove class hidden to reveal image
       image.classList.remove("hidden");
     }
-  });
-
-  // show right answers if click submit btn
-  submitBtn.addEventListener("click", ()  => {
-    showRightAnsw.innerText = `The right answer is: ${quiz.answer}`;
-  });
-
+  }); 
 }
+
+submitBtn.addEventListener("click", ()  => { 
+  const quiz = quizData[currentQuestion];
+  const selectedOptions = document.querySelectorAll("#options input:checked");
+  selectedOptions.forEach((e) => {
+    quiz.length;
+  });
+  // if quiz.answer includes ALLA e.value 
+  quiz.answer.includes(e.value);
+  if(quiz.answer === selectedOption.value) {
+    console.log("Right!");
+    showRightAnsw.innerText = `The right answer is: ${quiz.answer}`;
+  } else {
+    console.log("wrong");
+  }
+});
 
 
 function selectAnswer(e) {
-  
+  //the queryselector here only work for radio and not checkboxes
+  //checkboxes can have multiple checked inputs, detects only one
+  //queryselectorAll for multiselect checkboxes
   const selectedOption = document.querySelector("#options input:checked");
+  //checks if the user checked any of the options, if not than the value is null
   if(selectedOption === null) {
+    //remind user to check any checkbox
     alert("you have not checked in any");
-    //stays on the same page if user click the next button without checking in any
+    //with return statement stays on the same page so user can check in checkbox
     return;
   }
   const selectedButton = e.target;
   const currentQuiz = quizData[currentQuestion];
   if (currentQuiz.type !== "checkbox") {
+    //checks if the selected options value is equal to the current quiz's answer
     if (currentQuiz.options[selectedOption.value] === currentQuiz.answer) {
+      // if the statement is correct add one more score
       score++
     }
   } else {
     
   }
 
+  // moves to next question
   currentQuestion++;
-
+  // if there is any questions left then move on to the next question
   if (currentQuestion < quizData.length) {
     showQuestion();
   } else {
+    //if there is no more questions left show the results
     showResult();
   }
 }
 
+//calls function 
+showQuestion();
+
+//function for the score result
 function showResult() {
   quiz.innerHTML = `<h1> Quiz Completed </h1> 
   <p> Show your score: ${score}/${quizData.length}</p>`;
 }
 
-showQuestion();
 
 //create a next button that shows when clicked an answer!
 // create a play again button at the end of the quiz! 
