@@ -38,9 +38,13 @@ const quizData = [
     answer: "Yes"
   },
   {
-    question: "All penguins are flightless birds and semi-aquatic, meaning they live on land but spend most of their time in the water. The penguins' anatomy is shaped for water and therefore they are clumsy on land but really great and grandiose in water. There is one species that is the fastest of them all under water, with a maximum burst of speed of 36km/h. Which penguin is it?",
+    question: "Which penguin species swims the fastest of them all under water?",
     options: ["Macaroni Penguin", "Humboldt Penguin", "Gentoo Penguin", "Galapagos Penguin"],
     answer: "Gentoo Penguin"
+    //"All penguins are flightless birds and semi-aquatic, meaning they live on land but spend 
+    // most of their time in the water. The penguins' anatomy is shaped for water and therefore 
+    // they are clumsy on land but moves fast and grandiose under water water. 
+    // The gentoo penguin is the fastest with a maximum burst of speed of 36km/h". 
   },
   {
     // checkbox options
@@ -50,10 +54,14 @@ const quizData = [
     answer: ["South America", "Africa", "Australia", "Antarctica"]
   },
   {
-    question: "Chicks go through an akward teen phase were they begin to molt. In this stage they look silly but for a chick it is a matter of survival. They shed their fluffy fur and grow waterproof feathers. A step closer to become an independent adult! Which penguin species is this little chick?",
+    question: "Which penguin species is this little chick?",
     options: ["African Penguin", "Macaroni Penguin", "Magellanic Penguin", "Little Penguin"],
     answer: "African Penguin",
     img: "/img/miguel-alcantara-Ai4qoYZgetA-unsplash.jpg"
+    //Chicks go through an akward teen phase were they begin to molt. 
+    // In this stage they can look silly, but for a chick it is a matter of survival. 
+    // They shed their fluffy fur and grow waterproof feathers. A step closer to 
+    // become an independent adult! 
   },
   {
     question: "Which species is this?",
@@ -62,23 +70,27 @@ const quizData = [
     img: "/img/thomas-denton-pjt4AzvfTh0-unsplash.jpg"
   },
   {
-    question: "Which species is the tallest?",
+    question: "Which penguin species is the tallest?",
     options: ["King Penguin", "Emperor Penguin", "Royal Penguin"],
     answer: "Emperor Penguin"
   },
   {
-    question: "Which specis is this?",
+    question: "Which penguin species is this?",
     options: ["Yellow-Eyed-Penguin", "Magellanic Penguin", "Galapagos Penguin", "Fiordland Penguin"],
     answer: "Magellanic Penguin",
     img: "/img/agl-fotos-GQLT-fno6AU-unsplash.jpg"
   },
   {
-    question: "What maxmimum time can emperor penguins hold their breath?",
-    options: ["20 min", "10 min", "60 min", "5 min", "45 min"],
+    question: "What maxmimum time can penguins hold their breath?",
+    options: ["20 min", "9 min", "13 min", "2 min", "30 min"],
     answer: "20 min"
+    //Emperor and king penguins can hold their breath the longest out of all the other penguin species. When diving they can hold their breath up to 20 minutes (sometimes longer in deep dives). 
+    // Smaller penguin can hold their breath in a much shorter period of time compared to the bigger species. 
   },
 
 ];
+
+
 
 //declare variables
 const questionElement = document.querySelector("#questions");
@@ -153,14 +165,21 @@ function showQuestion() {
   }); 
 }
 
+// stuck here! 
 submitBtn.addEventListener("click", ()  => { 
   const quiz = quizData[currentQuestion];
   const selectedOptions = document.querySelectorAll("#options input:checked");
-  selectedOptions.forEach((e) => {
-    quiz.length;
-  });
+  //map method
+  const selectedValues = selectedOptions.map((opt) => {
+    return opt.value;
+  })
+  
+  // selectedOptions.forEach((e) => {
+
+  // });
   // if quiz.answer includes ALLA e.value 
-  quiz.answer.includes(e.value);
+  // if(quiz.answer.includes(e.value))
+
   if(quiz.answer === selectedOption.value) {
     console.log("Right!");
     showRightAnsw.innerText = `The right answer is: ${quiz.answer}`;
@@ -218,3 +237,4 @@ function showResult() {
 //create a next button that shows when clicked an answer!
 // create a play again button at the end of the quiz! 
 // add cursor pointers!
+
