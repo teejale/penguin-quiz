@@ -15,10 +15,19 @@ h1 {
 span {
   align-self: flex-end;
 }
+
+#modeBtn, #submit, #next, #redo {
+  border-radius: 50px;
+  border:none;
+  
+}
+
 #modeBtn {
   background-color: rgba(91, 91, 151, 0.753);
   align-self: flex-end;
-
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
 body {
@@ -28,14 +37,11 @@ body {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  /* flex-wrap: wrap; */
 }
 
 #quiz {
   position: relative;
   margin-top: 50px;
-  height: 60vh;
-  width: 55vw;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -90,9 +96,9 @@ align-self: center;
 margin: 25px;
 }
 
-#submit-container {
-  margin-left: 350px;
-  align-self: flex-end;
+#submit {
+  display: block;
+  margin: auto;
 }
 
 #next-container {
@@ -102,7 +108,6 @@ margin: 25px;
 
 #submit, #next, #redo {
   padding: 12px;
-  border-radius: 50px;
   width: 120px;
   background-color: rgb(123, 174, 240);
   border: none;
@@ -123,6 +128,11 @@ label, input, #submit, #next, #modeBtn, #redo {
   cursor: pointer;
 }
 
+#submit:hover {
+  background-color: rgb(114, 163, 228);
+  
+}
+
 #options {
   display: flex;
 }
@@ -139,10 +149,18 @@ input[type="radio"] {
 #redo {
   background-color: rgb(57, 238, 229);
 }
-
+/* 
+style more here */
 .darkMode {
   background-color: #262730;
-  color: white;
+  
+  h1 {
+    color: white;
+  }
+
+  #quiz {
+    background-color: #8c8ea5;
+  } 
 } 
 
 .hidden {
@@ -152,16 +170,29 @@ input[type="radio"] {
 #img-container {
   display: flex;
   justify-content: center;
-  /* margin-left: 700px; */
-  /* margin-bottom: 300px; */
   width: 300px;
   
 }
 
-#penguins {
+/* #penguins {
   height: 400px;
   border-radius: 1%;
   position: static;
-  /* margin-left: 400px; */
-}
 
+} */
+
+#penguins {
+    /* Ensures the image takes up the full width of its container */
+    width: 100%;
+    /* Sets a maximum height to control the overall size of the image area */
+    max-height: 400px; /* Adjust this value as needed */
+    /* This property tells the image how to fit within the dimensions specified above: */
+    object-fit: cover;
+    /* Optional: Ensures smooth scaling when hidden/shown via JS */
+    transition: all 0.3s ease;
+    
+    /* Retained from previous styles */
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
