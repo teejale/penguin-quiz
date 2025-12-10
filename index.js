@@ -90,15 +90,13 @@ const quizData = [
 
 ];
 
-
-
 //declare variables
 const questionElement = document.querySelector("#questions");
 const optionsElement = document.querySelector("#options");
 const nextBtn = document.querySelector("#next");
 const submitBtn = document.querySelector("#submit");
 const showRightAnsw = document.querySelector("#rightAnswer");
-
+const redoBtn = document.querySelector("#redo");
 
 nextBtn.addEventListener("click", nextQuestion);
 // Starts with first question (index 0)
@@ -165,6 +163,7 @@ function showQuestion() {
   }); 
 }
 
+// fix this
 function arraysEqualIgnoreOrder(a, b) {
   if (a.length !== b.length) return false;
 
@@ -175,28 +174,21 @@ function arraysEqualIgnoreOrder(a, b) {
 }
 
 
-//change this 
-// function arraysEqualIgnoreOrder(a, b) {
-//   if (a.length !== b.length) return false;
-
-//   const sortedA = [...a].sort();
-//   const sortedB = [...b].sort();
-
-//   return sortedA.every((val, i) => val === sortedB[i]);
-// }
-
 submitBtn.addEventListener("click", (e)  => { 
   const quiz = quizData[currentQuestion];
   const selectedOptions = document.querySelectorAll("#options input:checked");
   const selectedOptionsArr = Array.from(selectedOptions);
 
-
+  // alert if user try to click submit without checking in any options
   if(quiz.type === "checkbox" && selectedOptionsArr.length < quiz.answer.length) {
     alert(`You have to select ${quiz.answer.length} options!`);
     return;
+  } else if(selectedOptionsArr.length === 0) {
+    alert(`You have to select 1 option`);
+    return;
   }
   
-  //map method
+  
   const selectedAnswers = selectedOptionsArr.map((opt) => {
     return quiz.options[opt.value];
   })
@@ -215,17 +207,12 @@ submitBtn.addEventListener("click", (e)  => {
     showRightAnsw.style.color = "red";
     showRightAnsw.innerText = `Wrong! The right answer is: ${quiz.answer}`;
   }
-
+  //prevents user to check in other option after checking in an option
   submitBtn.disabled = true;
-  selectedOptions.forEach((box) => {
+  const allOptions = document.querySelectorAll("#options input");
+  allOptions.forEach((box) => {
     box.disabled = true;
   })
-
-  // selectedOptions.forEach((e) => {
-
-  // });
-  // if quiz.answer includes ALLA e.value 
-  // if(quiz.answer.includes(e.value))
 
   //show the next button 
   nextBtn.classList.remove("hidden");
@@ -286,11 +273,17 @@ function showResult() {
     perfectScoreText.style.color = "green";
     quiz.append(perfectScoreText);
   }
+  
+  //show redo button
+  redoBtn.classList.remove("hidden");
+  quiz.append(redoBtn);
+
+  //click button to redo the quiz
+  redoBtn.addEventListener("click",() => {
+    if("click") {
+      location.replace("");
+    }
+  });
+  
 
 }
-
-
-//create a next button that shows when clicked an answer!
-// create a play again button at the end of the quiz! 
-// add cursor pointers!
-

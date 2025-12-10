@@ -100,7 +100,7 @@ margin: 25px;
   margin-left: 150px;
 }
 
-#submit, #next {
+#submit, #next, #redo {
   padding: 12px;
   border-radius: 50px;
   width: 120px;
@@ -110,19 +110,16 @@ margin: 25px;
   color: rgb(36, 36, 36);
 }
 
-/*cursor for checkboxes and radio buttons too */
 label, #submit, #next {
-  cursor: pointer;
   font-size: 25px;
   color: rgb(10, 10, 10);
 }
 
 input {
-  cursor: pointer;
   margin-left: 30px;
 }
 
-label, input[type="checkbox"], input[type="radio"], #submit, #next, #modeBtn {
+label, input, #submit, #next, #modeBtn, #redo {
   cursor: pointer;
 }
 
@@ -137,6 +134,10 @@ input[type="radio"] {
 
 #next {
   background-color: rgb(138, 223, 223);
+}
+
+#redo {
+  background-color: rgb(57, 238, 229);
 }
 
 .darkMode {
