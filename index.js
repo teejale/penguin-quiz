@@ -174,7 +174,17 @@ function arraysEqualIgnoreOrder(a, b) {
   return sortedA.every((val, i) => val === sortedB[i]);
 }
 
-// stuck here! 
+
+//change this 
+// function arraysEqualIgnoreOrder(a, b) {
+//   if (a.length !== b.length) return false;
+
+//   const sortedA = [...a].sort();
+//   const sortedB = [...b].sort();
+
+//   return sortedA.every((val, i) => val === sortedB[i]);
+// }
+
 submitBtn.addEventListener("click", (e)  => { 
   const quiz = quizData[currentQuestion];
   const selectedOptions = document.querySelectorAll("#options input:checked");
@@ -217,8 +227,11 @@ submitBtn.addEventListener("click", (e)  => {
   // if quiz.answer includes ALLA e.value 
   // if(quiz.answer.includes(e.value))
 
-  
+  //show the next button 
+  nextBtn.classList.remove("hidden");
+
 });
+
 
 
 function nextQuestion() {
@@ -242,6 +255,11 @@ function nextQuestion() {
     //if there is no more questions left show the results
     showResult();
   }
+  submitBtn.disabled = false;
+  //hide the next button 
+  nextBtn.classList.add("hidden");
+  //remove previous right answer
+  showRightAnsw.innerText="";
 }
 
 //calls function 
@@ -251,6 +269,8 @@ showQuestion();
 function showResult() {
   quiz.innerHTML = `<h1> Quiz Completed </h1> 
   <p> Show your score: ${score}/${quizData.length}</p>`;
+  const links = document.createElement("link")
+  
 }
 
 
