@@ -269,8 +269,24 @@ showQuestion();
 function showResult() {
   quiz.innerHTML = `<h1> Quiz Completed </h1> 
   <p> Show your score: ${score}/${quizData.length}</p>`;
-  const links = document.createElement("link")
-  
+  if(score <= 5) {
+    const badScoreText = document.createElement("p");
+    badScoreText.innerText = "You did not pass the test. But now you have more knowledge about penguins!"
+    badScoreText.style.color= "red";
+    quiz.append(badScoreText);
+  } else if(score <=8) {
+    const goodScoreText = document.createElement("p");
+    goodScoreText.innerText = "Good job! Soon you will be an penguin expert!"
+    goodScoreText.style.color = "yellow";
+    quiz.append(goodScoreText);
+  }
+  else {
+    const perfectScoreText = document.createElement("p");
+    perfectScoreText.innerText = "Perfect! You are now an penguin expert!"
+    perfectScoreText.style.color = "green";
+    quiz.append(perfectScoreText);
+  }
+
 }
 
 
