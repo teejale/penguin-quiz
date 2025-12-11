@@ -285,7 +285,7 @@ button:disabled{
 }
 
 .wrongLabel {
-  background-color: rgb(253, 169, 169);
+  background-color: rgb(241, 110, 110);
   border-radius: 50px;
   padding: 8px;
   text-align: center;
@@ -295,10 +295,10 @@ button:disabled{
   color: rgb(223, 78, 78);
 }
 #goodScoreOutput {
-  color: #dbdb2a;
+  color: #e2e208;
 }
 #perfectScoreOutput {
-  color: rgb(77, 192, 77);
+  color: rgb(26, 214, 26);
 }
 
 #badScoreOutput, #goodScoreOutput, #perfectScoreOutput {

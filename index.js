@@ -257,20 +257,20 @@ function showResult() {
   <p> Your score: ${score}/15</p>`;
   if(score <= 8) {
     const badScoreText = document.createElement("p");
-    badScoreText.innerText = "You got bad score"
+    badScoreText.innerText = "Bad score..."
     badScoreText.setAttribute("id","badScoreOutput")
     // badScoreText.style.color= "red";
     quiz.append(badScoreText);
   } else if(score <=12) {
     const goodScoreText = document.createElement("p");
-    goodScoreText.innerText = "Yoou got good Score!"
+    goodScoreText.innerText = "Good Score!"
     goodScoreText.setAttribute("id", "goodScoreOutput")
     // goodScoreText.style.color = "yellow";
     quiz.append(goodScoreText);
   }
   else {
     const perfectScoreText = document.createElement("p");
-    perfectScoreText.innerText = "You got perfect Score!"
+    perfectScoreText.innerText = "Perfect Score!"
     perfectScoreText.setAttribute("id", "perfectScoreOutput")
     // perfectScoreText.style.color = "green";
     quiz.append(perfectScoreText);
