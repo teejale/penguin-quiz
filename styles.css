@@ -9,7 +9,7 @@ header {
 }
 
 h1, p {
-  color: rgb(91, 128, 206);
+  color: rgb(42, 128, 134);
   align-self: center;
 }
 
@@ -30,12 +30,19 @@ span {
 
 
 #modeBtn {
-  background-color: rgba(91, 91, 151, 0.753);
+  background-color: rgba(166, 166, 219, 0.753);
   align-self: flex-end;
   position: absolute;
   top: 10px;
   right: 10px;
+  padding: 2px 8px 2px 8px;
+  font-size: 20px;
 }
+
+#modeBtn:hover {
+  background-color: rgba(76, 76, 128, 0.753);
+} 
+
 #modeBtn:toggle {
   background-color: white;
   color:black;
@@ -61,7 +68,7 @@ body {
   background-color: #daf2fd; 
   border-radius: 3%;
   min-height: 800px;
-  width: 1100px;
+  width: 1200px;
   
 }
 
@@ -93,7 +100,7 @@ body {
   display: flex;
   align-content: space-between;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
   flex-direction: row;
 
 }
@@ -104,7 +111,7 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 45px;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 #buttons-container {
@@ -147,6 +154,31 @@ label, input, #submit, #next, #modeBtn, #redo {
   cursor: pointer;
 }
 
+input[type="radio"] {
+  /* height: 25px;
+  width: 25px; */
+    width: 25px;
+  height: 25px;
+  border: 2px solid #747474;
+  border-radius: 50%;
+  outline: none;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+
+input[type="checkbox"] {
+  height: 25px;
+  width: 25px;
+  
+}
+
+input[type="radio"]:hover, input[type="checkbox"]:hover  {
+  opacity: 1;
+  box-shadow: 0px 0px 0px 12px #d5edf8;
+  border-radius: 50%;
+}
+
 #submit:hover {
   background-color: rgb(106, 153, 214);
   
@@ -178,20 +210,20 @@ label, input, #submit, #next, #modeBtn, #redo {
   background-color: rgb(57, 238, 229);
   align-self: center;
   box-shadow: 0 1px 5px 0 rgb(52, 218, 209);
-  padding: 20px;
-  border-radius: 45px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 25px;
+    width: 250px;
+    height: 50px;
 }
 
 #redo:hover {
   background-color: rgb(56, 228, 219);
 }
 
-/* 
-style more here */
 .darkMode {
-  body {
-    background-color: #262730 !important;
-  }
+  background-color: #262730 !important;
+  background-image: linear-gradient(to bottom, #343752, #262730);
+  
   #submit {
     background-color: #282842;
     box-shadow: 1px 1px 5px 0 #2d2046;
@@ -205,7 +237,7 @@ style more here */
     background-color: #805ebf;
     box-shadow: 1px 1px 5px 0 #2d2046;
   }
-  h1, label, #questions, #submit, #next, #redo {
+  h1, label, button, #questions, #submit, #next, #redo, .answer-container  {
     color: #FAF9F6;
   }
   #quiz {
@@ -219,14 +251,11 @@ style more here */
   }
 } 
 
-
-
 .hidden {
   display: none; 
 }
 
 button:disabled{
-  /* background-color: grey !important; */
   cursor: not-allowed !important;
   opacity: 0.5;
 }
@@ -275,3 +304,4 @@ button:disabled{
 #badScoreOutput, #goodScoreOutput, #perfectScoreOutput {
   font-size: 30px;
 }
+

@@ -42,10 +42,6 @@ const quizData = [
     question: "Which penguin species swims the fastest?",
     options: ["Macaroni Penguin", "Humboldt Penguin", "Gentoo Penguin", "Galapagos Penguin"],
     answer: "Gentoo Penguin",
-    //"All penguins are flightless birds and semi-aquatic, meaning they live on land but spend 
-    // most of their time in the water. The penguins' anatomy is shaped for water and therefore 
-    // they are clumsy on land but moves fast and grandiose under water water. 
-    // The gentoo penguin is the fastest with a maximum burst of speed of 36km/h". 
     img: "/img/tao-EhCyX3SHw1o-unsplash.jpg"
   },
   {
@@ -61,10 +57,6 @@ const quizData = [
     options: ["African Penguin", "Macaroni Penguin", "Rockhopper Penguin", "Little Penguin"],
     answer: "African Penguin",
     img: "/img/miguel-alcantara-Ai4qoYZgetA-unsplash.jpg"
-    //Chicks go through an akward teen phase were they begin to molt. 
-    // In this stage they can look silly, but for a chick it is a matter of survival. 
-    // They shed their fluffy fur and grow waterproof feathers. A step closer to 
-    // become an independent adult! 
   },
   {
     question: "Which species is this?",
@@ -89,8 +81,6 @@ const quizData = [
     question: "What maxmimum time can penguins hold their breath?",
     options: ["20 min", "9 min", "13 min", "2 min", "30 min"],
     answer: "20 min",
-    //Emperor and king penguins can hold their breath the longest out of all the other penguin species. When diving they can hold their breath up to 20 minutes (sometimes longer in deep dives). 
-    // Smaller penguin can hold their breath in a much shorter period of time compared to the bigger species. 
     img: "/img/jacob-meissner-R_SdTtodRKA-unsplash.jpg"
   },
 
@@ -103,8 +93,6 @@ const nextBtn = document.querySelector("#next");
 const submitBtn = document.querySelector("#submit");
 const showRightAnsw = document.querySelector("#rightAnswer");
 const redoBtn = document.querySelector("#redo");
-
-
 
 nextBtn.addEventListener("click", nextQuestion);
 // Starts with first question (index 0)
@@ -199,12 +187,9 @@ submitBtn.addEventListener("click", (e) => {
     alert(`You have to select 1 option`);
     return;
   }
-
-
   const selectedAnswers = selectedOptionsArr.map((opt) => {
     return quiz.options[opt.value];
-  })
-
+  });
   let correctOptionsScore = 0;
   //checkbox scores
   if (selectedAnswers.length > 1 ) {
@@ -214,8 +199,6 @@ submitBtn.addEventListener("click", (e) => {
         correctOptionsScore++;
       }
     });
-    
-
     //radio buttons score
     showRightAnsw.innerText = `You answered ${correctOptionsScore} / ${quiz.answer.length} correct!`;
   } else if (quiz.answer === selectedAnswers[0]) {
@@ -236,8 +219,6 @@ submitBtn.addEventListener("click", (e) => {
   // remove disabled 
   nextBtn.disabled = false;
 });
-
-
 
 function nextQuestion() {
   //the queryselector here only work for radio and not checkboxes
@@ -306,5 +287,4 @@ function showResult() {
     }
   });
   
-
 }
