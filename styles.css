@@ -42,8 +42,7 @@ span {
 }
 
 body {
-  /* background-color: 	#ffff; */
-  color: black;
+  /* color: rgb(197, 169, 169); */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -149,7 +148,7 @@ label, input, #submit, #next, #modeBtn, #redo {
 }
 
 #submit:hover {
-  background-color: rgb(114, 163, 228);
+  background-color: rgb(106, 153, 214);
   
 }
 
@@ -171,6 +170,10 @@ label, input, #submit, #next, #modeBtn, #redo {
   box-shadow: 0 5px 5px 0 rgb(121, 194, 194);
 }
 
+#next:hover {
+  background-color: rgb(133, 214, 214);
+}
+
 #redo {
   background-color: rgb(57, 238, 229);
   align-self: center;
@@ -178,6 +181,11 @@ label, input, #submit, #next, #modeBtn, #redo {
   padding: 20px;
   border-radius: 45px;
 }
+
+#redo:hover {
+  background-color: rgb(56, 228, 219);
+}
+
 /* 
 style more here */
 .darkMode {
@@ -210,6 +218,8 @@ style more here */
     background-color: rgb(10, 36, 10);
   }
 } 
+
+
 
 .hidden {
   display: none; 
