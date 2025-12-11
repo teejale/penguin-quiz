@@ -24,7 +24,8 @@ const quizData = [
     question: "What food do penguins eat? Three right answers!",
     options: ["Starfish", "Krill", "Algae", "Fish", "Squid", "Seaweed"],
     type: "checkbox",
-    answer: ["Krill", "Fish", "Squid"]
+    answer: ["Krill", "Fish", "Squid"],
+    img: "/img/bob-brewer-CG3Zo4boXoA-unsplash.jpg"
   },
   {
     question: "Which penguin species is this?",
@@ -35,23 +36,26 @@ const quizData = [
   {
     question: "Do all penguins go through fasting?",
     options: ["Yes", "No"],
-    answer: "Yes"
+    answer: "Yes",
+    img: "/img/martin-wettstein-GJQUr0SgKi0-unsplash.jpg"
   },
   {
     question: "Which penguin species swims the fastest of them all under water?",
     options: ["Macaroni Penguin", "Humboldt Penguin", "Gentoo Penguin", "Galapagos Penguin"],
-    answer: "Gentoo Penguin"
+    answer: "Gentoo Penguin",
     //"All penguins are flightless birds and semi-aquatic, meaning they live on land but spend 
     // most of their time in the water. The penguins' anatomy is shaped for water and therefore 
     // they are clumsy on land but moves fast and grandiose under water water. 
     // The gentoo penguin is the fastest with a maximum burst of speed of 36km/h". 
+    img: "/img/tao-EhCyX3SHw1o-unsplash.jpg"
   },
   {
     // checkbox options
     question: "Penguins can be found in four different continents. Which are they?",
     options: ["South America", "Europe", "Africa", "Australia", "Asia", "North America", "Antarctica"],
     type: "checkbox",
-    answer: ["South America", "Africa", "Australia", "Antarctica"]
+    answer: ["South America", "Africa", "Australia", "Antarctica"],
+    img: "/img/hartono-creative-studio-1gW-pzeXX2E-unsplash.jpg"
   },
   {
     question: "Which penguin species is this little chick?",
@@ -72,7 +76,9 @@ const quizData = [
   {
     question: "Which penguin species is the tallest?",
     options: ["King Penguin", "Emperor Penguin", "Royal Penguin"],
-    answer: "Emperor Penguin"
+    answer: "Emperor Penguin",
+    img: "/img/jean-wimmerlin-jNHKHND7F9E-unsplash.jpg"
+
   },
   {
     question: "Which penguin species is this?",
@@ -83,9 +89,10 @@ const quizData = [
   {
     question: "What maxmimum time can penguins hold their breath?",
     options: ["20 min", "9 min", "13 min", "2 min", "30 min"],
-    answer: "20 min"
+    answer: "20 min",
     //Emperor and king penguins can hold their breath the longest out of all the other penguin species. When diving they can hold their breath up to 20 minutes (sometimes longer in deep dives). 
     // Smaller penguin can hold their breath in a much shorter period of time compared to the bigger species. 
+    img: "/img/robert-schwarz-SkFBbCPSCN0-unsplash.jpg"
   },
 
 ];

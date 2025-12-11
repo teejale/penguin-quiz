@@ -31,7 +31,7 @@ span {
 }
 
 body {
-  background-color: rgb(216, 239, 253);
+  background-color: 	#ffff;
   color: black;
   display: flex;
   justify-content: space-between;
@@ -45,7 +45,7 @@ body {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  background-color: rgb(228, 228, 255);
+  background-color: #daf2fd;
   border-radius: 3%;
 }
 
@@ -153,13 +153,18 @@ input[type="radio"] {
 style more here */
 .darkMode {
   background-color: #262730;
-  
-  h1 {
-    color: white;
+  #submit {
+    background-color: #282842;
+  }
+  #next {
+    background-color: #402758;
+  }
+  h1, label, #questions, #submit, #next{
+    color: #FAF9F6;
   }
 
   #quiz {
-    background-color: #8c8ea5;
+    background-color: #333553;
   } 
 } 
 
