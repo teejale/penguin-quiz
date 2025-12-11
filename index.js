@@ -12,7 +12,6 @@ function changeMode() {
     darkLightBtn.textContent = "Change to light mode";
   } else {
     darkLightBtn.textContent = "Change to dark mode";
-    
   }
 }
 
@@ -105,6 +104,8 @@ const submitBtn = document.querySelector("#submit");
 const showRightAnsw = document.querySelector("#rightAnswer");
 const redoBtn = document.querySelector("#redo");
 
+
+
 nextBtn.addEventListener("click", nextQuestion);
 // Starts with first question (index 0)
 let currentQuestion = 0;
@@ -170,50 +171,61 @@ function showQuestion() {
   }); 
 }
 
-// fix this
-function arraysEqualIgnoreOrder(a, b) {
-  if (a.length !== b.length) return false;
-
-  const sortedA = [...a].sort();
-  const sortedB = [...b].sort();
-
-  return sortedA.every((val, i) => val === sortedB[i]);
+function labelStyle() {
+  const quiz = quizData[currentQuestion];
+  //add style to labels
+  const labels = document.querySelectorAll("#options label");
+  console.log(labels)
+  labels.forEach((label, i) => {
+    if (quiz.answer.includes(label.innerText)) {
+      label.classList.add("rightLabel");
+    } else {
+      label.classList.add("wrongLabel");
+    }
+  });
 }
 
 
-submitBtn.addEventListener("click", (e)  => { 
+submitBtn.addEventListener("click", (e) => {
   const quiz = quizData[currentQuestion];
   const selectedOptions = document.querySelectorAll("#options input:checked");
   const selectedOptionsArr = Array.from(selectedOptions);
 
   // alert if user try to click submit without checking in any options
-  if(quiz.type === "checkbox" && selectedOptionsArr.length < quiz.answer.length) {
+  if (quiz.type === "checkbox" && selectedOptionsArr.length < quiz.answer.length) {
     alert(`You have to select ${quiz.answer.length} options!`);
     return;
-  } else if(selectedOptionsArr.length === 0) {
+  } else if (selectedOptionsArr.length === 0) {
     alert(`You have to select 1 option`);
     return;
   }
-  
-  
+
+
   const selectedAnswers = selectedOptionsArr.map((opt) => {
     return quiz.options[opt.value];
   })
 
-  console.log(selectedAnswers.length);
+  let correctOptionsScore = 0;
+  //checkbox scores
+  if (selectedAnswers.length > 1 ) {
+    selectedAnswers.forEach((answer) => {
+      if (quiz.answer.includes(answer)) {
+        score++
+        correctOptionsScore++;
+      }
+    });
+    
 
-  if(selectedAnswers.length > 1 && arraysEqualIgnoreOrder(selectedAnswers, quiz.answer)) {
-    score++
-    showRightAnsw.style.color = "green";
-    showRightAnsw.innerText = "Right!";
+    //radio buttons score
+    showRightAnsw.innerText = `You answered ${correctOptionsScore} / ${quiz.answer.length} correct!`;
   } else if (quiz.answer === selectedAnswers[0]) {
-    score++
-    showRightAnsw.style.color = "green";
-    showRightAnsw.innerText = "Right!";
-  } else {
-    showRightAnsw.style.color = "red";
-    showRightAnsw.innerText = `Wrong! The right answer is: ${quiz.answer}`;
-  }
+      score++
+      showRightAnsw.innerText = "Right!";
+    } else {
+      showRightAnsw.innerText = `Wrong! The right answer is: ${quiz.answer}`;
+    }
+
+  labelStyle();
   //prevents user to check in other option after checking in an option
   submitBtn.disabled = true;
   const allOptions = document.querySelectorAll("#options input");
@@ -221,9 +233,8 @@ submitBtn.addEventListener("click", (e)  => {
     box.disabled = true;
   })
 
-  //show the next button 
-  nextBtn.classList.remove("hidden");
-
+  // remove disabled 
+  nextBtn.disabled = false;
 });
 
 
@@ -250,8 +261,8 @@ function nextQuestion() {
     showResult();
   }
   submitBtn.disabled = false;
-  //hide the next button 
-  nextBtn.classList.add("hidden");
+  //disable next button 
+  nextBtn.disabled = true;
   //remove previous right answer
   showRightAnsw.innerText="";
 }
@@ -262,22 +273,25 @@ showQuestion();
 //function for the score result
 function showResult() {
   quiz.innerHTML = `<h1> Quiz Completed </h1> 
-  <p> Show your score: ${score}/${quizData.length}</p>`;
-  if(score <= 5) {
+  <p> Your score: ${score}/15</p>`;
+  if(score <= 8) {
     const badScoreText = document.createElement("p");
-    badScoreText.innerText = "You did not pass the test. But now you have more knowledge about penguins!"
-    badScoreText.style.color= "red";
+    badScoreText.innerText = "You got bad score"
+    badScoreText.setAttribute("id","badScoreOutput")
+    // badScoreText.style.color= "red";
     quiz.append(badScoreText);
-  } else if(score <=8) {
+  } else if(score <=12) {
     const goodScoreText = document.createElement("p");
-    goodScoreText.innerText = "Good job! Soon you will be an penguin expert!"
-    goodScoreText.style.color = "yellow";
+    goodScoreText.innerText = "Yoou got good Score!"
+    goodScoreText.setAttribute("id", "goodScoreOutput")
+    // goodScoreText.style.color = "yellow";
     quiz.append(goodScoreText);
   }
   else {
     const perfectScoreText = document.createElement("p");
-    perfectScoreText.innerText = "Perfect! You are now an penguin expert!"
-    perfectScoreText.style.color = "green";
+    perfectScoreText.innerText = "You got perfect Score!"
+    perfectScoreText.setAttribute("id", "perfectScoreOutput")
+    // perfectScoreText.style.color = "green";
     quiz.append(perfectScoreText);
   }
   
