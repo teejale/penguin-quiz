@@ -30,16 +30,16 @@ const quizData = [
     question: "Which penguin species is this?",
     options: ["King Penguin", "Gentoo Penguin", "Chinstrap Penguin", "Emperor Penguin", "Adelié Penguin"],
     answer: "King Penguin",
-    img: "/img/matthew-stephenson-EWJyQTLSo5o-unsplash.jpg"
+    img: "/img/hubert-neufeld-j-udI4zim2E-unsplash.jpg"
   },
   {
     question: "Do all penguins go through fasting?",
     options: ["Yes", "No"],
     answer: "Yes",
-    img: "/img/martin-wettstein-GJQUr0SgKi0-unsplash.jpg"
+    img: "/img/cornelius-ventures-xw0qdCSerPo-unsplash.jpg"
   },
   {
-    question: "Which penguin species swims the fastest of them all under water?",
+    question: "Which penguin species swims the fastest?",
     options: ["Macaroni Penguin", "Humboldt Penguin", "Gentoo Penguin", "Galapagos Penguin"],
     answer: "Gentoo Penguin",
     //"All penguins are flightless birds and semi-aquatic, meaning they live on land but spend 
@@ -58,7 +58,7 @@ const quizData = [
   },
   {
     question: "Which penguin species is this little chick?",
-    options: ["African Penguin", "Macaroni Penguin", "Magellanic Penguin", "Little Penguin"],
+    options: ["African Penguin", "Macaroni Penguin", "Rockhopper Penguin", "Little Penguin"],
     answer: "African Penguin",
     img: "/img/miguel-alcantara-Ai4qoYZgetA-unsplash.jpg"
     //Chicks go through an akward teen phase were they begin to molt. 
@@ -68,22 +68,22 @@ const quizData = [
   },
   {
     question: "Which species is this?",
-    options: ["Snares Penguin", "Erect-Crestet Penguin", "Northern Rockhopper Penguin", "Royal Penguin"],
-    answer: "Northern Rockhopper Penguin",
-    img: "/img/thomas-denton-pjt4AzvfTh0-unsplash.jpg"
+    options: ["Snares Penguin", "Erect-Crestet Penguin", "Magellanic Penguin", "Royal Penguin"],
+    answer: "Magellanic Penguin",
+    img: "/img/sander-crombach-5k_zylvdFPs-unsplash.jpg"
   },
   {
     question: "Which penguin species is the tallest?",
     options: ["King Penguin", "Emperor Penguin", "Royal Penguin"],
     answer: "Emperor Penguin",
-    img: "/img/jean-wimmerlin-jNHKHND7F9E-unsplash.jpg"
+    img: "/img/patricia-serna-zPZ9vqqDNBA-unsplash(1).jpg"
 
   },
   {
     question: "Which penguin species is this?",
-    options: ["Yellow-Eyed-Penguin", "Magellanic Penguin", "Galapagos Penguin", "Fiordland Penguin"],
-    answer: "Magellanic Penguin",
-    img: "/img/agl-fotos-GQLT-fno6AU-unsplash.jpg"
+    options: ["Yellow-Eyed-Penguin", "Adelié Penguin", "Galapagos Penguin", "Fiordland Penguin"],
+    answer: "Adelié Penguin",
+    img: "/img/jean-wimmerlin-jNHKHND7F9E-unsplash.jpg"
   },
   {
     question: "What maxmimum time can penguins hold their breath?",
@@ -91,7 +91,7 @@ const quizData = [
     answer: "20 min",
     //Emperor and king penguins can hold their breath the longest out of all the other penguin species. When diving they can hold their breath up to 20 minutes (sometimes longer in deep dives). 
     // Smaller penguin can hold their breath in a much shorter period of time compared to the bigger species. 
-    img: "/img/robert-schwarz-SkFBbCPSCN0-unsplash.jpg"
+    img: "/img/jacob-meissner-R_SdTtodRKA-unsplash.jpg"
   },
 
 ];
