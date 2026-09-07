@@ -24,25 +24,25 @@ const quizData = [
     options: ["Starfish", "Krill", "Algae", "Fish", "Squid", "Seaweed"],
     type: "checkbox",
     answer: ["Krill", "Fish", "Squid"],
-    img: "/img/bob-brewer-CG3Zo4boXoA-unsplash.jpg"
+    img: "img/bob-brewer-CG3Zo4boXoA-unsplash.jpg"
   },
   {
     question: "Which penguin species is this?",
     options: ["King Penguin", "Gentoo Penguin", "Chinstrap Penguin", "Emperor Penguin", "Adelié Penguin"],
     answer: "King Penguin",
-    img: "/img/hubert-neufeld-j-udI4zim2E-unsplash.jpg"
+    img: "img/hubert-neufeld-j-udI4zim2E-unsplash.jpg"
   },
   {
     question: "Do all penguins go through fasting?",
     options: ["Yes", "No"],
     answer: "Yes",
-    img: "/img/cornelius-ventures-xw0qdCSerPo-unsplash.jpg"
+    img: "img/cornelius-ventures-xw0qdCSerPo-unsplash.jpg"
   },
   {
     question: "Which penguin species swims the fastest?",
     options: ["Macaroni Penguin", "Humboldt Penguin", "Gentoo Penguin", "Galapagos Penguin"],
     answer: "Gentoo Penguin",
-    img: "/img/tao-EhCyX3SHw1o-unsplash.jpg"
+    img: "img/tao-EhCyX3SHw1o-unsplash.jpg"
   },
   {
     // checkbox options
@@ -50,38 +50,38 @@ const quizData = [
     options: ["South America", "Europe", "Africa", "Australia", "Asia", "North America", "Antarctica"],
     type: "checkbox",
     answer: ["South America", "Africa", "Australia", "Antarctica"],
-    img: "/img/hartono-creative-studio-1gW-pzeXX2E-unsplash.jpg"
+    img: "img/hartono-creative-studio-1gW-pzeXX2E-unsplash.jpg"
   },
   {
     question: "Which penguin species is this little chick?",
     options: ["African Penguin", "Macaroni Penguin", "Rockhopper Penguin", "Little Penguin"],
     answer: "African Penguin",
-    img: "/img/miguel-alcantara-Ai4qoYZgetA-unsplash.jpg"
+    img: "img/miguel-alcantara-Ai4qoYZgetA-unsplash.jpg"
   },
   {
     question: "Which species is this?",
     options: ["Snares Penguin", "Erect-Crestet Penguin", "Magellanic Penguin", "Royal Penguin"],
     answer: "Magellanic Penguin",
-    img: "/img/sander-crombach-5k_zylvdFPs-unsplash.jpg"
+    img: "img/sander-crombach-5k_zylvdFPs-unsplash.jpg"
   },
   {
     question: "Which penguin species is the tallest?",
     options: ["King Penguin", "Emperor Penguin", "Royal Penguin"],
     answer: "Emperor Penguin",
-    img: "/img/patricia-serna-zPZ9vqqDNBA-unsplash(1).jpg"
+    img: "img/patricia-serna-zPZ9vqqDNBA-unsplash(1).jpg"
 
   },
   {
     question: "Which penguin species is this?",
     options: ["Yellow-Eyed-Penguin", "Adelié Penguin", "Galapagos Penguin", "Fiordland Penguin"],
     answer: "Adelié Penguin",
-    img: "/img/jean-wimmerlin-jNHKHND7F9E-unsplash.jpg"
+    img: "img/jean-wimmerlin-jNHKHND7F9E-unsplash.jpg"
   },
   {
     question: "What maxmimum time can penguins hold their breath?",
     options: ["20 min", "9 min", "13 min", "2 min", "30 min"],
     answer: "20 min",
-    img: "/img/jacob-meissner-R_SdTtodRKA-unsplash.jpg"
+    img: "img/jacob-meissner-R_SdTtodRKA-unsplash.jpg"
   },
 
 ];
